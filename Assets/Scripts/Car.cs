@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Car : MonoBehaviour {
 
-    public HingeJoint2D joint;
+    public WheelJoint2D joint;
 
 	// Use this for initialization
 	void Start () {
         joint.useMotor = true;
-        JointMotor2D myMotor = joint.motor;
-        myMotor.motorSpeed = 500;
-        joint.motor = myMotor;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        JointMotor2D myMotor = joint.motor;
+        myMotor.motorSpeed = Input.GetAxis("Horizontal") * 500;
+        joint.motor = myMotor;
+    }
 }
